@@ -5,8 +5,6 @@ export class Home extends Base {
     super();
     this.appJSON = appJSON;
   }
-  _test(){
-    console.log("connected")
-  }
+
   
 }
