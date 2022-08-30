@@ -7,6 +7,12 @@
 :root {
   --bog-color: #fb8d04;
   --text-color: white;
+  --upper-nav-color: rgba(255, 255, 255, 0.78);
+}
+
+@font-face {
+  font-family: myFont;
+  src: url("./src/fonts/BOG-Regular.woff2");
 }
 
 body {
@@ -43,6 +49,10 @@ body {
   margin: 20px 40px 20px 0;
 }
 
+#solo-nav-tab {
+  color: var(--bog-color);
+}
+
 .upper-nav-ul > li {
   margin-right: 30px;
   list-style: none;
@@ -51,12 +61,14 @@ body {
 
 .upper-nav-ul > li > a {
   text-decoration: none;
-  color: white;
+  color: var(--upper-nav-color);
+  font-family: myFont;
+
   /* temp */
 }
 
-.logo-container {
-    cursor: pointer;
+.icon-container {
+  cursor: pointer;
   /* position: relative; */
   display: flex;
   align-items: center;
@@ -66,7 +78,7 @@ body {
   color: inherit;
   text-decoration: none;
   margin: 0px 10px;
-  color: white;
+  color: var(--upper-nav-color);
   /* temp */
 }
 
@@ -76,10 +88,10 @@ body {
   align-items: center;
   margin: 0 50px;
   cursor: pointer;
-
+  font-size: small;
 }
 
-.ibank-logo {
+.ibank-icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,25 +109,25 @@ body {
 }
 
 .lang-change {
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    color: var(--text-color);
-    margin: 0 20px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--upper-nav-color);
+  margin: 0 20px;
+  font-family: myFont;
 }
 
 .become-solo {
-    cursor: pointer;
-    background-color: var(--bog-color);
-    width: 110px;
-    height: 32px;
-    color: white;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-
+  cursor: pointer;
+  background-color: var(--bog-color);
+  width: 110px;
+  height: 32px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-family: myFont;
 }
-
 
 /* Media */
 /* @media (max-width: 1296px) */
