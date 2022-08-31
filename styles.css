@@ -9,6 +9,7 @@
   --text-color: white;
   --upper-nav-color: rgba(255, 255, 255, 0.78);
   --main-font-size: 14px;
+  --light-blue: #2b3a48;
 }
 
 @font-face {
@@ -31,9 +32,16 @@
   src: url("./src/fonts/MarkGEO-Medium.woff2");
 }
 
+/* @font-face {
+  font-family: filterHeading;
+  src: url("./src/fonts/MarkGEO-Medium.woff2");
+} */
+/* /src/fonts/MarkGEO-Medium.woff2 */
+
 body {
   background-color: #091a2b;
   width: 100%;
+  height: 100%;
 }
 .container {
   width: 1296px;
@@ -108,7 +116,7 @@ body {
 }
 
 .ibank-wrapper:hover {
-  background-color: #2b3a48;
+  background-color: var(--light-blue);
   border-radius: 20px;
 }
 
@@ -155,18 +163,13 @@ body {
 
 /** lower navigation **/
 .lower-nav-bar {
-  background-color: #2b3a48;
+  background-color: var(--light-blue);
   height: 58px;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 10;
-}
-
-div.stick-elem {
-  position: sticky; top: 0; z-index: 11;
- 
 }
 
 .lower-nav-ul {
@@ -177,14 +180,17 @@ div.stick-elem {
 
 .lower-nav-ul > li {
   margin-right: 35px;
-  color: rgba(255, 255, 255, 0.9);
+}
+
+.lower-nav-ul > li > a {
   font-family: myFont;
   font-size: var(--main-font-size);
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
 }
 
 .lower-nav-ul > li:hover {
   color: white;
-  cursor: pointer;
 }
 
 /** shout **/
@@ -242,7 +248,51 @@ div.stick-elem {
   background-image: linear-gradient(to bottom, rgba(43, 25, 25, 0.3), #2b1919);
 }
 
-/* linear-gradient(to bottom, rgba(43, 25, 25, 0.3), #2b1919); */
+/** main content filter section **/
+.search-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.search-filter {
+  display: flex;
+}
+.filter-heading {
+  font-family: shoutHeading;
+  color: var(--text-color);
+}
+
+.search-field {
+  position: relative;
+}
+
+.search-input {
+  outline: none;
+  border: none;
+  background-color: #1c2b3b;
+  caret-color: var(--bog-color);
+  height: 40px;
+  width: 200px;
+  padding-left: 20px;
+  border-radius: 20px;
+}
+
+#price-sort {
+  margin-left: 35px;
+  outline: none;
+  width: 200px;
+  height: 40px;
+  border-radius: 2px;
+  border: solid 1px #2b3948;
+  color: var(--text-color);
+  cursor: pointer;
+  background-color: transparent;
+  padding: 0 10px;
+  font-family: myFont;
+}
+
+/** main content **/
 
 /* Media */
 /* @media (max-width: 1296px) */
