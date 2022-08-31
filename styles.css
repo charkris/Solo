@@ -8,11 +8,27 @@
   --bog-color: #fb8d04;
   --text-color: white;
   --upper-nav-color: rgba(255, 255, 255, 0.78);
+  --main-font-size: 14px;
 }
 
 @font-face {
   font-family: myFont;
   src: url("./src/fonts/BOG-Regular.woff2");
+}
+
+@font-face {
+  font-family: becomeSolo;
+  src: url("./src/fonts/MarkGEOCAPS-Regular.woff2");
+}
+
+@font-face {
+  font-family: mainHeading;
+  src: url("./src/fonts/BOG-Headline-UltraBold.woff2");
+}
+
+@font-face {
+  font-family: shoutHeading;
+  src: url("./src/fonts/MarkGEO-Medium.woff2");
 }
 
 body {
@@ -22,8 +38,9 @@ body {
 .container {
   width: 1296px;
   margin: auto;
-  background-color: grey;
 }
+
+/** upper header navigation **/
 
 .top-header-wrapper {
   display: flex;
@@ -46,7 +63,8 @@ body {
 }
 
 .main-logo {
-  margin: 20px 40px 20px 0;
+  margin: 18px 33px 18px 0;
+  cursor: pointer;
 }
 
 #solo-nav-tab {
@@ -54,7 +72,8 @@ body {
 }
 
 .upper-nav-ul > li {
-  margin-right: 30px;
+  font-size: var(--main-font-size);
+  margin: 0 13px;
   list-style: none;
   text-decoration: none;
 }
@@ -63,8 +82,6 @@ body {
   text-decoration: none;
   color: var(--upper-nav-color);
   font-family: myFont;
-
-  /* temp */
 }
 
 .icon-container {
@@ -77,7 +94,7 @@ body {
   /* padding: var(--padding); */
   color: inherit;
   text-decoration: none;
-  margin: 0px 10px;
+  margin: 0px 12px;
   color: var(--upper-nav-color);
   /* temp */
 }
@@ -86,9 +103,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 50px;
+  margin: 0 20px 0 50px;
   cursor: pointer;
-  font-size: small;
+}
+
+.ibank-wrapper:hover {
+  background-color: #2b3a48;
+  border-radius: 20px;
 }
 
 .ibank-icon {
@@ -96,16 +117,17 @@ body {
   justify-content: center;
   align-items: center;
   background-color: var(--bog-color);
-  padding: 8px;
   border-radius: 100%;
-  width: 41px;
-  height: 41px;
+  width: 32px;
+  height: 32px;
   margin-right: 5px;
 }
 
 .ibank-wrapper > a {
   text-decoration: none;
   color: var(--bog-color);
+  font-family: myFont;
+  font-size: 12px;
 }
 
 .lang-change {
@@ -120,14 +142,107 @@ body {
 .become-solo {
   cursor: pointer;
   background-color: var(--bog-color);
-  width: 110px;
+  width: 120px;
   height: 32px;
   color: white;
   border: none;
   outline: none;
-  border-radius: 5px;
-  font-family: myFont;
+  border-radius: 2px;
+  font-family: becomeSolo;
+  margin-left: 12px;
+  font-size: 12px;
 }
+
+/** lower navigation **/
+.lower-nav-bar {
+  background-color: #2b3a48;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+div.stick-elem {
+  position: sticky; top: 0; z-index: 11;
+ 
+}
+
+.lower-nav-ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.lower-nav-ul > li {
+  margin-right: 35px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: myFont;
+  font-size: var(--main-font-size);
+}
+
+.lower-nav-ul > li:hover {
+  color: white;
+  cursor: pointer;
+}
+
+/** shout **/
+
+.main-heading {
+  font-family: mainHeading;
+  color: var(--text-color);
+  font-size: 36px;
+  margin: 65px 0 35px 0;
+}
+
+.shout {
+  display: flex;
+  /* overflow: hidden; */
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-image: url("./src/imgs/a3dd4512-dc72-45cd-b93c-b96a8b050eb2.png");
+  border-radius: 12px;
+  background-position: center center;
+  background-size: cover;
+}
+
+.heading-learn-more {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 40px;
+  z-index: 1;
+}
+
+.shout-heading {
+  font-family: shoutHeading;
+  color: var(--text-color);
+  margin-bottom: 35px;
+}
+
+.learn-more {
+  cursor: pointer;
+  background-color: var(--bog-color);
+  width: 120px;
+  height: 32px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  font-family: becomeSolo;
+  font-size: 12px;
+}
+
+.shout-overlay {
+  position: absolute;
+  inset: 0px;
+  opacity: 1;
+  background-image: linear-gradient(to bottom, rgba(43, 25, 25, 0.3), #2b1919);
+}
+
+/* linear-gradient(to bottom, rgba(43, 25, 25, 0.3), #2b1919); */
 
 /* Media */
 /* @media (max-width: 1296px) */
