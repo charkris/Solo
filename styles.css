@@ -11,6 +11,8 @@
   --main-font-size: 14px;
   --light-blue: #2b3a48;
   --icon-back-color: rgba(255, 255, 255, 0.03);
+  --main-content-border: #1c2b3b;
+  --text-dark-color: #8b8b8b;
 }
 
 @font-face {
@@ -38,10 +40,15 @@
   src: url("./src/fonts/MarkGEO-Medium.woff2");
 }
 
-/* @font-face {
-  font-family: forHover;
-  src: url("./src/fonts/BOG-Headline-Bold.woff2");
-} */
+@font-face {
+  font-family: resultHeading;
+  src: url("./src/fonts/BOG-Regular.woff2");
+}
+
+@font-face {
+  font-family: resultDescr;
+  src: url("./src/fonts/MarkGEO-SemiBold.woff2");
+}
 
 body {
   background-color: #091a2b;
@@ -301,7 +308,7 @@ body {
 .search-input {
   outline: none;
   border: none;
-  background-color: #1c2b3b;
+  background-color: var(--main-content-border);
   caret-color: var(--bog-color);
   height: 40px;
   width: 200px;
@@ -322,6 +329,58 @@ body {
   background-color: transparent;
   padding: 0 10px;
   font-family: myFont;
+}
+
+.price-filter-form,
+.city-filter-form,
+.building-filter-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.city-filter-checkbox,
+.building-cond-checkbox,
+.price-filter-radio {
+  display: flex;
+  align-items: center;
+  color: var(--upper-nav-color);
+  font-size: 12px;
+  margin: 11.5px 0;
+}
+
+.city-filter-heading,
+.building-cond-heading,
+.price-filter-heading {
+  margin-bottom: 20px;
+}
+
+.city-filter-heading-wrapper,
+.price-filter-heading-wrapper,
+.build-cond-heading-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow-up {
+  background-image: url("./src/imgs/chevron-up.svg");
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+}
+
+.arrow-down {
+  background-image: url("./src/imgs/chevron-up.svg");
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+}
+
+.city-label,
+.building-cond-label,
+.price-label {
+  margin-left: 10px;
 }
 
 /** main content **/
@@ -345,8 +404,9 @@ body {
   font-size: 13px;
   border: 1px solid rgba(255, 255, 255, 0.66);
   border-radius: 12px;
-  color: #8b8b8b;
+  color: var(--text-dark-color);
   font-family: filters;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .result-item-wrapper {
@@ -355,24 +415,59 @@ body {
   justify-content: space-between;
   padding: 24px;
   border-radius: 4px;
-  border: 1px solid rgb(224, 224, 224);
+  border: 1px solid var(--main-content-border);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.result-item-wrapper:hover {
+  background-color: var(--icon-back-color);
 }
 
 .result-data-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-gap: 32px;
   color: var(--text-color);
-
 }
 
 .offer-heading {
-  margin: 8px 0 12px 0;
+  margin: 15px 0 12px 0;
+  font-family: resultHeading;
+  font-weight: normal;
+  font-size: 14px;
 }
 
-.result-img,
-.offer-description {
+.result-img {
+  background-size: cover; 
+  background-position: center;
   width: 262.86px;
+  height: 160px;
+}
+
+.offer-description {
+  font-family: resultDescr;
+  width: 262.86px;
+  font-weight: 16px;
+}
+
+.offer-location {
+  color: var(--text-dark-color);
+  font-family: myFont;
+  font-size: 14px;
+  margin-bottom: 35px;
+}
+
+.result-learn-more > a {
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--bog-color);
+  font-family: filters;
+}
+
+.result-learn-more > a:hover {
+  color: #fcb154;
 }
 
 /** footer **/
@@ -400,6 +495,7 @@ body {
   border: none;
   border-radius: 2px;
   background-color: var(--icon-back-color);
+  cursor: pointer;
 }
 
 .footer-copyright {
@@ -407,9 +503,11 @@ body {
   font-family: shoutHeading;
   font-size: 14px;
 }
+
 .class-1 {
   fill: #fff;
 }
+
 .class-2,
 .class-3 {
   fill: red;
@@ -434,6 +532,9 @@ body {
   .upper-nav-ul {
     display: none;
   }
+  /* .upper-nav-part-sec{
+    flex-direction: column;
+  } */
   .result-data-container {
     display: flex;
     flex-direction: column;
@@ -445,7 +546,6 @@ body {
     text-decoration: none;
     position: relative; */
   }
-
   .filter-container {
     display: none;
   }
@@ -465,5 +565,16 @@ body {
   }
   .result-img {
     width: 200px;
+  }
+  .offer-description {
+    width: 100%;
+    margin-right: 20px;
+  }
+  .footer-section {
+    flex-wrap: wrap;
+  }
+  .footer-lang,
+  .footer-logo {
+    margin: 0;
   }
 }

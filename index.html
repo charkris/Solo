@@ -84,12 +84,12 @@
                   </g>
                 </svg>
               </div>
-              <ul class="upper-nav-ul">
-                <li><a id="solo-nav-tab" href="">SOLO</a></li>
+              <ul class="upper-nav-ul" id="upper-nav-id">
+                <!-- <li><a id="solo-nav-tab" href="">SOLO</a></li>
                 <li><a href="">ფიზიკური პირი</a></li>
                 <li><a href="">ბიზნესი</a></li>
                 <li><a href="">Wealth</a></li>
-                <li><a href="">შეთავაზებები</a></li>
+                <li><a href="">შეთავაზებები</a></li> -->
               </ul>
             </div>
             <div class="upper-nav-part-sec">
@@ -248,11 +248,10 @@
     </header>
     <main>
       <div class="sticky-element">
-        <!-- sticky from here  -->
         <nav class="lower-nav-bar">
           <div class="container">
-            <ul class="lower-nav-ul">
-              <li><a href="">მთავარი</a></li>
+            <ul class="lower-nav-ul" id="lower-nav-id">
+              <!-- <li><a href="">მთავარი</a></li>
               <li><a href="">ბანკინგი</a></li>
               <li><a href="">ელექტრონული ბანკი</a></li>
               <li><a href="">Lifestyle</a></li>
@@ -260,7 +259,7 @@
               <li><a href="">ჩვენ შესახებ</a></li>
               <li><a href="">სიახლეები</a></li>
               <li><a href="">ინვესტიციები</a></li>
-              <li><a href="">ბლოგი</a></li>
+              <li><a href="">ბლოგი</a></li> -->
             </ul>
           </div>
         </nav>
@@ -356,318 +355,95 @@
             <div class="main-content">
               <div class="filter-container">
                 <div class="city-filter">
-                  აირჩიეთ ქალაქი
-                  <form action="">
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
+                  <div class="city-filter-heading">
+                    <div class="city-filter-heading-wrapper">
+                      <div class="">აირჩიეთ ქალაქი</div>
+                      <div class="arrow-up"></div>
+                    </div>
+                  </div>
+                  <form
+                    action=""
+                    class="city-filter-form"
+                    id="city-filter-form-id"
+                  >
+                    <!-- <div class="city-filter-checkbox">
+                      <input
+                        type="checkbox"
+                        id="city1"
+                        name="city1"
+                        value="თბილისი"
+                      />
+                      <label for="city1" class="city-label"> თბილისი</label>
+                    </div> -->
                   </form>
                 </div>
                 <div class="price-filter">
-                  <form action="">
-                    <p>კვადრატულის ფასი</p>
-                    <input type="radio" id="age1" name="price" value="30" />
-                    <label for="age1">1000 - 1500</label><br />
-                    <input type="radio" id="age2" name="price" value="60" />
-                    <label for="age2">31 - 60</label><br />
-                    <input type="radio" id="age3" name="age" value="100" />
-                    <label for="age3">61 - 100</label><br />
-                    <input type="radio" id="age1" name="age" value="30" />
-                    <label for="age1">0 - 30</label><br />
-                    <input type="radio" id="age2" name="age" value="60" />
-                    <label for="age2">31 - 60</label><br />
-                    <input type="radio" id="age3" name="age" value="100" />
-                    <label for="age3">61 - 100</label><br />
-                    <input type="radio" id="age1" name="age" value="30" />
-                    <label for="age1">0 - 30</label><br />
-                    <input type="radio" id="age2" name="age" value="60" />
-                    <label for="age2">31 - 60</label><br />
-                    <input type="radio" id="age3" name="age" value="100" />
-                    <label for="age3">61 - 100</label><br />
+                  <div class="price-filter-heading">
+                    <div class="price-filter-heading-wrapper">
+                      <div class="">კვადრატულის ფასი</div>
+                      <div class="arrow-up"></div>
+                    </div>
+                  </div>
+                  <form
+                    action=""
+                    class="price-filter-form"
+                    id="price-filter-form-id"
+                  >
+                    <!-- <div class="price-filter-radio">
+                      <input type="radio" id="age1" name="price" value="30" />
+                      <label for="age1" class="price-label">1000 - 1500</label>
+                    </div> -->
                   </form>
                 </div>
                 <div class="building-cond-filter">
-                  მშენებლობის სტატუსი
-                  <form action="">
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> მწვანე კარკასი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
-                    <input
-                      type="checkbox"
-                      id="city1"
-                      name="city1"
-                      value="თბილისი"
-                    />
-                    <label for="city1"> თბილისი</label><br />
+                  <div class="building-cond-heading">
+                    <div class="build-cond-heading-wrapper">
+                      <div class="">მშენებლობის სტატუსი</div>
+                      <div class="arrow-up"></div>
+                    </div>
+                  </div>
+                  <form
+                    action=""
+                    class="building-filter-form"
+                    id="building-filter-form-id"
+                  >
+                    <!-- <div class="building-cond-checkbox">
+                      <input
+                        type="checkbox"
+                        id="city1"
+                        name="city1"
+                        value="თბილისი"
+                      />
+                      <label for="city1" class="building-cond-label">
+                        მწვანე კარკასი</label
+                      >
+                    </div> -->
                   </form>
                 </div>
               </div>
-              <div class="result-data-container">
-                <!--  -->
-                <div class="result-item-wrapper">
-                  <img
+              <div class="result-data-container" id="main-content-id">
+                <!-- <div class="result-item-wrapper">
+                  <div
                     class="result-img"
-                    src="./src/imgs/87b4e30e-47c3-40ce-9fe9-2aaae0b1d0aa.jpg"
-                    alt=""
-                  />
+                    style="
+                      background-image: url(https://ramad.bog.ge/s3/solo/images/75ff458c-0f60-406b-86ed-c5ac452d8723.jpg);
+                    "
+                  ></div>
                   <div class="result-lower-wrap">
                     <h4 class="offer-heading">კურორტი კოხტა - მიტარბი</h4>
                     <p class="offer-description">
                       სპეციალური შეთავაზება SOLO მომხმარებლებისთვის
                     </p>
-                    <span class="offer-location"
-                      >დაბა ბაკურიანი კოხტას ძირი</span
-                    >
+                    <div class="offer-location">დაბა ბაკურიანი კოხტას ძირი</div>
                     <div class="result-learn-more">
                       <a href="">გაიგეთ მეტი</a>
                     </div>
                   </div>
-                </div>
-
-                <div class="result-item-wrapper">
-                  <img
-                    class="result-img"
-                    src="./src/imgs/87b4e30e-47c3-40ce-9fe9-2aaae0b1d0aa.jpg"
-                    alt=""
-                  />
-                  <div class="result-lower-wrap">
-                    <h4 class="offer-heading">კურორტი კოხტა - მიტარბი</h4>
-                    <p class="offer-description">
-                      სპეციალური შეთავაზება SOLO მომხმარებლებისთვის
-                    </p>
-                    <span class="offer-location"
-                      >დაბა ბაკურიანი კოხტას ძირი</span
-                    >
-                    <div class="result-learn-more">
-                      <a href="">გაიგეთ მეტი</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="result-item-wrapper">
-                  <img
-                    class="result-img"
-                    src="./src/imgs/87b4e30e-47c3-40ce-9fe9-2aaae0b1d0aa.jpg"
-                    alt=""
-                  />
-                  <div class="result-lower-wrap">
-                    <h4 class="offer-heading">კურორტი კოხტა - მიტარბი</h4>
-                    <p class="offer-description">
-                      სპეციალური შეთავაზება SOLO მომხმარებლებისთვის
-                    </p>
-                    <span class="offer-location"
-                      >დაბა ბაკურიანი კოხტას ძირი</span
-                    >
-                    <div class="result-learn-more">
-                      <a href="">გაიგეთ მეტი</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="result-item-wrapper">
-                  <img
-                    class="result-img"
-                    src="./src/imgs/87b4e30e-47c3-40ce-9fe9-2aaae0b1d0aa.jpg"
-                    alt=""
-                  />
-                  <div class="result-lower-wrap">
-                    <h4 class="offer-heading">კურორტი კოხტა - მიტარბი</h4>
-                    <p class="offer-description">
-                      სპეციალური შეთავაზება SOLO მომხმარებლებისთვის
-                    </p>
-                    <span class="offer-location"
-                      >დაბა ბაკურიანი კოხტას ძირი</span
-                    >
-                    <div class="result-learn-more">
-                      <a href="">გაიგეთ მეტი</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="result-item-wrapper">
-                  <img
-                    class="result-img"
-                    src="./src/imgs/87b4e30e-47c3-40ce-9fe9-2aaae0b1d0aa.jpg"
-                    alt=""
-                  />
-                  <div class="result-lower-wrap">
-                    <h4 class="offer-heading">კურორტი კოხტა - მიტარბი</h4>
-                    <p class="offer-description">
-                      სპეციალური შეთავაზება SOLO მომხმარებლებისთვის
-                    </p>
-                    <span class="offer-location"
-                      >დაბა ბაკურიანი კოხტას ძირი</span
-                    >
-                    <div class="result-learn-more">
-                      <a href="">გაიგეთ მეტი</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="result-item-wrapper">
-                  <img
-                    class="result-img"
-                    src="./src/imgs/87b4e30e-47c3-40ce-9fe9-2aaae0b1d0aa.jpg"
-                    alt=""
-                  />
-                  <div class="result-lower-wrap">
-                    <h4 class="offer-heading">კურორტი კოხტა - მიტარბი</h4>
-                    <p class="offer-description">
-                      სპეციალური შეთავაზება SOLO მომხმარებლებისთვის
-                    </p>
-                    <span class="offer-location"
-                      >დაბა ბაკურიანი კოხტას ძირი</span
-                    >
-                    <div class="result-learn-more">
-                      <a href="">გაიგეთ მეტი</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="result-item-wrapper">
-                  <img
-                    class="result-img"
-                    src="./src/imgs/87b4e30e-47c3-40ce-9fe9-2aaae0b1d0aa.jpg"
-                    alt=""
-                  />
-                  <div class="result-lower-wrap">
-                    <h4 class="offer-heading">კურორტი კოხტა - მიტარბი</h4>
-                    <p class="offer-description">
-                      სპეციალური შეთავაზება SOLO მომხმარებლებისთვის
-                    </p>
-                    <span class="offer-location"
-                      >დაბა ბაკურიანი კოხტას ძირი</span
-                    >
-                    <div class="result-learn-more">
-                      <a href="">გაიგეთ მეტი</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="result-item-wrapper">
-                  <img
-                    class="result-img"
-                    src="./src/imgs/87b4e30e-47c3-40ce-9fe9-2aaae0b1d0aa.jpg"
-                    alt=""
-                  />
-                  <div class="result-lower-wrap">
-                    <h4 class="offer-heading">კურორტი კოხტა - მიტარბი</h4>
-                    <p class="offer-description">
-                      სპეციალური შეთავაზება SOLO მომხმარებლებისთვის
-                    </p>
-                    <span class="offer-location"
-                      >დაბა ბაკურიანი კოხტას ძირი</span
-                    >
-                    <div class="result-learn-more">
-                      <a href="">გაიგეთ მეტი</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="result-item-wrapper">
-                  <img
-                    class="result-img"
-                    src="./src/imgs/87b4e30e-47c3-40ce-9fe9-2aaae0b1d0aa.jpg"
-                    alt=""
-                  />
-                  <div class="result-lower-wrap">
-                    <h4 class="offer-heading">კურორტი კოხტა - მიტარბი</h4>
-                    <p class="offer-description">
-                      სპეციალური შეთავაზება SOLO მომხმარებლებისთვის
-                    </p>
-                    <span class="offer-location"
-                      >დაბა ბაკურიანი კოხტას ძირი</span
-                    >
-                    <div class="result-learn-more">
-                      <a href="">გაიგეთ მეტი</a>
-                    </div>
-                  </div>
-                </div>
-
-                <!--  -->
+                </div> -->
               </div>
             </div>
           </div>
         </section>
-        <!-- to here  -->
       </div>
     </main>
     <footer>
