@@ -3,18 +3,14 @@ import { myObject } from "./common/config.js";
 let homePage = new Home();
 homePage.render();
 
-fetch(
-  "https://solo.ge/api/developers/items/common/608aaad7ae3b47ff23daa433?skip=0&limit=9"
-)
+fetch(myObject.my_api)
   .then((resp) => resp.json())
   .then((res) => {
-    console.log(res.data.items)
+    console.log(res.data.items);
     let mainContent = new Home(res.data.items);
 
     mainContent.renderMain();
   });
-
-  
 
 // let myApi = 'https://mocki.io/v1/be185936-09b7-4a9d-a1d6-cfab28941003'
 
