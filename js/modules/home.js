@@ -35,7 +35,7 @@ export class Home extends Base {
             id="city${index}"
             name="city${index}"
             value="${item}"
-            class="mark"
+            class="mark city"
           />
           <label for="city${index}" class="city-label">${item}</label>
         </div>
@@ -64,12 +64,12 @@ export class Home extends Base {
         <div class="building-cond-checkbox">
           <input
             type="checkbox"
-            id="city${index}"
-            name="city${index}"
+            id="building${index}"
+            name="building${index}"
             value="${item}"
-            class="mark"
+            class="mark building"
           />
-          <label for="city${index}" class="building-cond-label">
+          <label for="building${index}" class="building-cond-label">
           ${item}</label
           >
         </div>
@@ -79,27 +79,41 @@ export class Home extends Base {
   }
 
   _getMainContent() {
-    return this.appJSON.map((obj, index) => {
-      return `
+    if (this.appJSON.length === 0) {
+      return `<div class="noItems">
+                <img src="./src/imgs/no-data-icon.jpg" alt="" />
+                <h4 class="empty-data-heading">კატეგორია ცარიელია</h4>
+                <p class="empty-data-body">
+                  მონიშნულ კატეგორიაში ვერ მოიძებნა მონაცემები, გთხოვთ მონიშნოთ სხვა
+                  კატეგორია
+                </p>
+              </div>`;
+    }
+    return this.appJSON
+      .map((obj, index) => {
+        return `
         <div class="result-item-wrapper">
           <div
-          class="result-img"
-          style="background-image: url(https://ramad.bog.ge/s3/solo/${obj.image.url}); "
-          >
+            class="result-img"
+            style="background-image: url(https://ramad.bog.ge/s3/solo/${obj.image.url}); "
+            >
           </div>
-          <div class="result-lower-wrap">
-            <h4 class="offer-heading">${obj.developer}</h4>
-            <p class="offer-description">
-              ${obj.priceLabel}
-            </p>
-            <div class="offer-location">${obj.address}</div>
+          <article class="main-content-article">
+            <div class="result-lower-wrap">
+                  <h4 class="offer-heading">${obj.developer}</h4>
+                  <p class="offer-description">
+                    ${obj.priceLabel}
+                  </p>
+                  <div class="offer-location">${obj.address}</div>
+            </div>    
             <div class="result-learn-more">
-              <a href="">გაიგეთ მეტი</a>
+                <a href="">გაიგეთ მეტი</a>
             </div>
-          </div>
-        </div>
+          </article>
+        </div>  
       `;
-    }).join(' ');
+      })
+      .join(" ");
   }
 
   render() {
@@ -120,6 +134,6 @@ export class Home extends Base {
   }
 
   renderMain() {
-    this.setContent('main-content-id', this._getMainContent())
+    this.setContent("main-content-id", this._getMainContent());
   }
 }

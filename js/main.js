@@ -6,7 +6,7 @@ let homePage = new Home();
 homePage.render();
 
 // set main content
-fetch(myObject.baseUrl)
+fetch(`${myObject.baseUrl}&skip=0&limit=9`)
   .then((resp) => resp.json())
   .then((res) => {
     let mainContent = new Home(res.data.items);
@@ -50,12 +50,57 @@ buildingArrow.addEventListener("click", () => {
 function getInputValue() {
   return document.querySelector(".search-input").value;
 }
-
 document.querySelector(".search-input").addEventListener("keydown", () => {
-  fetch(`${myObject.baseUrl}searchStr=${getInputValue()}`)
+  fetch(`${myObject.baseUrl}searchStr=${getInputValue()}&skip=0&limit=9`)
     .then((resp) => resp.json())
     .then((res) => {
       let mainContent = new Home(res.data.items);
+      //   console.log(res.data.items.length)
       mainContent.renderMain();
     });
 });
+
+// sort function
+let sortField = document.getElementById("price-sort");
+sortField.addEventListener("change", () => {
+  console.log(sortField.value);
+  fetch(`${myObject.baseUrl}sortBy=${sortField.value}&skip=0&limit=9`)
+    .then((resp) => resp.json())
+    .then((res) => {
+      let mainContent = new Home(res.data.items);
+      //   console.log(res.data.items.length)
+      mainContent.renderMain();
+    });
+});
+
+// get checked item
+function checkBox(id) {
+  console.log(document.getElementById(id));
+  document.getElementById(id).setAttribute("checked", "checked"); //.checked = true;
+  console.log(document.getElementById(id));
+}
+
+let cityCheckBox = document.querySelectorAll(".city");
+let tempStrArr = [];
+
+cityCheckBox.forEach((item) => {
+  item.addEventListener("click", () => {
+    if (item.checked) {
+      tempStrArr.push(item.value);
+      console.log(tempStrArr);
+    } else {
+      for (let i = 0; i < tempStrArr.length; i++) {
+        if (tempStrArr[i] === item.value) tempStrArr.splice(i, 1);
+      }
+    }
+    console.log(tempStrArr.join(''));
+    fetch(`${myObject.baseUrl}cityParam=${tempStrArr.join('%2C')}&skip=0`)
+        .then((resp) => resp.json())
+        .then((res) => {
+          let mainContent = new Home(res.data.items);
+          mainContent.renderMain();
+        });
+
+  });
+});
+
