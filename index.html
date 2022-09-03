@@ -263,7 +263,6 @@
             </ul>
           </div>
         </nav>
-
         <section class="shout-section">
           <div class="container">
             <div class="shout-content">
@@ -280,7 +279,6 @@
             </div>
           </div>
         </section>
-
         <section class="search-section">
           <div class="container">
             <div class="search-content">
@@ -355,10 +353,10 @@
             <div class="main-content">
               <div class="filter-container">
                 <div class="city-filter">
-                  <div class="city-filter-heading">
+                  <div class="city-filter-heading" id="city-filter-heading-id">
                     <div class="city-filter-heading-wrapper">
                       <div class="">აირჩიეთ ქალაქი</div>
-                      <div class="arrow-up"></div>
+                      <div class="arrow-up" id="city-filter-arrow"></div>
                     </div>
                   </div>
                   <form
@@ -378,10 +376,13 @@
                   </form>
                 </div>
                 <div class="price-filter">
-                  <div class="price-filter-heading">
+                  <div
+                    class="price-filter-heading"
+                    id="price-filter-heading-id"
+                  >
                     <div class="price-filter-heading-wrapper">
                       <div class="">კვადრატულის ფასი</div>
-                      <div class="arrow-up"></div>
+                      <div class="arrow-up" id="price-filter-arrow"></div>
                     </div>
                   </div>
                   <form
@@ -396,10 +397,13 @@
                   </form>
                 </div>
                 <div class="building-cond-filter">
-                  <div class="building-cond-heading">
+                  <div
+                    class="building-cond-heading"
+                    id="building-cond-heading-id"
+                  >
                     <div class="build-cond-heading-wrapper">
                       <div class="">მშენებლობის სტატუსი</div>
-                      <div class="arrow-up"></div>
+                      <div class="arrow-up" id="building-filter-arrow"></div>
                     </div>
                   </div>
                   <form
@@ -552,7 +556,6 @@
         </div>
       </div>
     </footer>
-
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>

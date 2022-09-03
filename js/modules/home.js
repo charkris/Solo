@@ -35,6 +35,7 @@ export class Home extends Base {
             id="city${index}"
             name="city${index}"
             value="${item}"
+            class="mark"
           />
           <label for="city${index}" class="city-label">${item}</label>
         </div>
@@ -48,7 +49,7 @@ export class Home extends Base {
       .map((item, index) => {
         return `
         <div class="price-filter-radio">
-          <input type="radio" id="price${index}" name="price" value="${item[0]}-${item[1]}" />
+          <input type="radio" id="price${index}" name="price" value="${item[0]}-${item[1]}" class="mark"/>
           <label for="price${index}" class="price-label">${item[0]} - ${item[1]}</label>
         </div>
         `;
@@ -66,6 +67,7 @@ export class Home extends Base {
             id="city${index}"
             name="city${index}"
             value="${item}"
+            class="mark"
           />
           <label for="city${index}" class="building-cond-label">
           ${item}</label
@@ -76,7 +78,7 @@ export class Home extends Base {
       .join(" ");
   }
 
-  getMainContent() {
+  _getMainContent() {
     return this.appJSON.map((obj, index) => {
       return `
         <div class="result-item-wrapper">
@@ -86,7 +88,7 @@ export class Home extends Base {
           >
           </div>
           <div class="result-lower-wrap">
-            <h4 class="offer-heading">${obj.projectName}</h4>
+            <h4 class="offer-heading">${obj.developer}</h4>
             <p class="offer-description">
               ${obj.priceLabel}
             </p>
@@ -118,6 +120,6 @@ export class Home extends Base {
   }
 
   renderMain() {
-    this.setContent('main-content-id', this.getMainContent())
+    this.setContent('main-content-id', this._getMainContent())
   }
 }

@@ -1,29 +1,61 @@
 import { Home } from "./modules/home.js";
 import { myObject } from "./common/config.js";
 let homePage = new Home();
+
+// render mark-up dynamicly
 homePage.render();
 
-fetch(myObject.my_api)
+// set main content
+fetch(myObject.baseUrl)
   .then((resp) => resp.json())
   .then((res) => {
-    console.log(res.data.items);
     let mainContent = new Home(res.data.items);
-
     mainContent.renderMain();
   });
 
-// let myApi = 'https://mocki.io/v1/be185936-09b7-4a9d-a1d6-cfab28941003'
+// filter section  display
+// !! make a function from these
+let cityArrow = document.getElementById("city-filter-arrow");
+cityArrow.addEventListener("click", () => {
+  cityArrow.classList.toggle("arrow-down");
+  cityArrow.classList.toggle("arrow-up");
+  document.getElementById("city-filter-form-id").classList.toggle("hidden");
+  document
+    .getElementById("city-filter-heading-id")
+    .classList.toggle("city-filter-heading");
+});
 
-//'https://mocki.io/v1/a17138de-3164-48ab-b7dc-1468aecf2bd4'
-//big = https://mocki.io/v1/be185936-09b7-4a9d-a1d6-cfab28941003
+let priceArrow = document.getElementById("price-filter-arrow");
+priceArrow.addEventListener("click", () => {
+  priceArrow.classList.toggle("arrow-down");
+  priceArrow.classList.toggle("arrow-up");
+  document.getElementById("price-filter-form-id").classList.toggle("hidden");
+  document
+    .getElementById("price-filter-heading-id")
+    .classList.toggle("price-filter-heading");
+});
 
-// myApi = JSON.stringify(myApi);
+let buildingArrow = document.getElementById("building-filter-arrow");
+buildingArrow.addEventListener("click", () => {
+  buildingArrow.classList.toggle("arrow-down");
+  buildingArrow.classList.toggle("arrow-up");
+  document.getElementById("building-filter-form-id").classList.toggle("hidden");
+  document
+    .getElementById("building-cond-heading-id")
+    .classList.toggle("building-cond-heading");
+});
+// make a function
 
-// fetch('https://solo.ge/api/developers/items/common/608aaad7ae3b47ff23daa433?fromParam=2000&toParam=2500&skip=0&limit=9').then(response => response.json())
-//   .then(data => console.log(data));
+// search field
+function getInputValue() {
+  return document.querySelector(".search-input").value;
+}
 
-//   fetch('https://mocki.io/v1/a17138de-3164-48ab-b7dc-1468aecf2bd4')
-//   .then((resp) => resp.json())
-//   .then((res) => {
-//     console.log(res.data.items);
-//   });
+document.querySelector(".search-input").addEventListener("keydown", () => {
+  fetch(`${myObject.baseUrl}searchStr=${getInputValue()}`)
+    .then((resp) => resp.json())
+    .then((res) => {
+      let mainContent = new Home(res.data.items);
+      mainContent.renderMain();
+    });
+});

@@ -53,6 +53,7 @@
 body {
   background-color: #091a2b;
 }
+
 .container {
   width: 1296px;
   margin: auto;
@@ -196,7 +197,8 @@ body {
   font-size: 12px;
 }
 
-/** lower navigation **/
+/** lower header navigation **/
+
 .lower-nav-bar {
   background-color: var(--light-blue);
   height: 58px;
@@ -240,7 +242,6 @@ body {
 
 .shout {
   display: flex;
-  /* overflow: hidden; */
   position: relative;
   width: 100%;
   height: 300px;
@@ -286,6 +287,7 @@ body {
 }
 
 /** main content filter section **/
+
 .search-content {
   display: flex;
   justify-content: space-between;
@@ -315,6 +317,7 @@ body {
   padding-left: 20px;
   border-radius: 20px;
   font-family: myFont;
+  color: var(--text-dark-color);
 }
 
 #price-sort {
@@ -363,24 +366,35 @@ body {
   align-items: center;
 }
 
-.arrow-up {
-  background-image: url("./src/imgs/chevron-up.svg");
+.arrow-up,
+.arrow-down {
   background-repeat: no-repeat;
   width: 12px;
   height: 12px;
+  cursor: pointer;
 }
 
 .arrow-down {
+  background-image: url("./src/imgs/chevron-down.svg");
+}
+
+.arrow-up {
   background-image: url("./src/imgs/chevron-up.svg");
-  background-repeat: no-repeat;
-  width: 12px;
-  height: 12px;
+}
+
+.hidden {
+  display: none;
 }
 
 .city-label,
 .building-cond-label,
 .price-label {
   margin-left: 10px;
+  cursor: pointer;
+}
+
+.mark {
+  cursor: pointer;
 }
 
 /** main content **/
@@ -393,7 +407,11 @@ body {
 .filter-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  margin-right: 32px;
+}
+
+.price-filter {
+  margin: 20px 0;
 }
 
 .city-filter,
@@ -412,7 +430,6 @@ body {
 .result-item-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 24px;
   border-radius: 4px;
   border: 1px solid var(--main-content-border);
@@ -440,7 +457,7 @@ body {
 }
 
 .result-img {
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
   width: 262.86px;
   height: 160px;
@@ -521,8 +538,7 @@ body {
   color: var(--text-color);
 }
 
-/* Media */
-/* @media (max-width: 1296px) */
+/* Media Query */
 
 @media screen and (max-width: 1296px) {
   .container {
@@ -532,19 +548,9 @@ body {
   .upper-nav-ul {
     display: none;
   }
-  /* .upper-nav-part-sec{
-    flex-direction: column;
-  } */
   .result-data-container {
     display: flex;
     flex-direction: column;
-    /* box-sizing: border-box;
-    padding: var(--space-24);
-    border-radius: 4px;
-    border: 1px solid rgb(224, 224, 224);
-    width: 100%;
-    text-decoration: none;
-    position: relative; */
   }
   .filter-container {
     display: none;
