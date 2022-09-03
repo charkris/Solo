@@ -49,8 +49,8 @@ export class Home extends Base {
       .map((item, index) => {
         return `
         <div class="price-filter-radio">
-          <input type="radio" id="price${index}" name="price" value="${item[0]}-${item[1]}" class="mark"/>
-          <label for="price${index}" class="price-label">${item[0]} - ${item[1]}</label>
+          <input type="radio" id="price${index}" name="price" value="${item}" class="mark price"/>
+          <label for="price${index}" class="price-label">${item}</label>
         </div>
         `;
       })

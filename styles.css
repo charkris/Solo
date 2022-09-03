@@ -352,18 +352,23 @@ body {
   margin: 11.5px 0;
 }
 
+.price-filter-radio {
+  color: var(--text-dark-color);
+}
+
 .city-filter-heading,
 .building-cond-heading,
 .price-filter-heading {
   margin-bottom: 20px;
 }
 
-.city-filter-heading-wrapper,
-.price-filter-heading-wrapper,
-.build-cond-heading-wrapper {
+#city-filter-heading-wrapper,
+#price-filter-heading-wrapper,
+#build-cond-heading-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 
 .arrow-up,
