@@ -1,5 +1,5 @@
 import { Base } from "../common/base.js";
-import { myObject } from "../common/config.js";
+import { config } from "../common/config.js";
 
 export class Home extends Base {
   constructor(appJSON) {
@@ -117,19 +117,19 @@ export class Home extends Base {
   }
 
   render() {
-    this.setContent("upper-nav-id", this._getUpperNavBar(myObject.upperNavArr));
-    this.setContent("lower-nav-id", this._getLowerNavBar(myObject.lowerNavArr));
+    this.setContent("upper-nav-id", this._getUpperNavBar(config.upperNavArr));
+    this.setContent("lower-nav-id", this._getLowerNavBar(config.lowerNavArr));
     this.setContent(
       "city-filter-form-id",
-      this._getCityFilter(myObject.filterCityArr)
+      this._getCityFilter(config.filterCityArr)
     );
     this.setContent(
       "price-filter-form-id",
-      this._getPriceFilter(myObject.filterPriceArr)
+      this._getPriceFilter(config.filterPriceArr)
     );
     this.setContent(
       "building-filter-form-id",
-      this._getBuildingFilter(myObject.filterBuildingArr)
+      this._getBuildingFilter(config.filterBuildingArr)
     );
   }
 

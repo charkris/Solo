@@ -1,8 +1,6 @@
-export let myObject = {
-  baseUrl: `https://solo.ge/api/developers/items/common/608aaad7ae3b47ff23daa433?`, //&skip=0&limit=9
-
+export const config = {
+  baseUrl: `https://solo.ge/api/developers/items/common/608aaad7ae3b47ff23daa433?`,
   upperNavArr: ["ფიზიკური პირი", "ბიზნესი", "Wealth", "შეთავაზებები"],
-
   lowerNavArr: [
     "მთავარი",
     "ბანკინგი",
@@ -44,3 +42,7 @@ export let myObject = {
     "ჭკვიანი კარკასი",
   ],
 };
+
+export function generateApi(from, to, city, type, search, sort, skip, limit) {
+  return `${config.baseUrl}fromParam=${from}&toParam=${to}&cityParam=${city}&typeParam=${type}&searchStr=${search}&sortBy=${sort}&skip=${skip}&limit=${limit}`;
+}

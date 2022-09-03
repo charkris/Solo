@@ -1,20 +1,37 @@
 import { Home } from "./modules/home.js";
-import { myObject } from "./common/config.js";
-let homePage = new Home();
+import { generateApi } from "./common/config.js"
 
 // render mark-up dynamicly
+let homePage = new Home();
 homePage.render();
 
-// set main content
-fetch(`${myObject.baseUrl}&skip=0&limit=9`)
-  .then((resp) => resp.json())
-  .then((res) => {
-    let mainContent = new Home(res.data.items);
-    mainContent.renderMain();
-  });
+// api param values
+let fromVal = "";
+let toVal = "";
+let cityVal = "";
+let typeVal = "";
+let searchVal = "";
+let sortVal = "";
+let skipVal = 0;
+let limitVal = 9;
+let newApi;
+
+// console.log(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal))
+// newApi = `${config.baseUrl}fromParam=${fromVal}&toParam=${toVal}&cityParam=${cityVal}&typeParam=${typeVal}&searchStr=${searchVal}&sortBy=${sortVal}&skip=${skipVal}&limit=${limitVal}`;
+
+function getContent(apiUrl) {
+  fetch(apiUrl)
+    .then((resp) => resp.json())
+    .then((res) => {
+      let mainContent = new Home(res.data.items);
+      mainContent.renderMain();
+    });
+}
+
+getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
 
 // filter section  display
-// !! make a function from these
+// !! make a function from these !! do not touch yet
 let cityHeading = document.getElementById("city-filter-heading-wrapper");
 let cityArrow = document.getElementById("city-filter-arrow");
 cityHeading.addEventListener("click", () => {
@@ -25,7 +42,6 @@ cityHeading.addEventListener("click", () => {
     .getElementById("city-filter-heading-id")
     .classList.toggle("city-filter-heading");
 });
-
 let priceHeading = document.getElementById("price-filter-heading-wrapper");
 let priceArrow = document.getElementById("price-filter-arrow");
 priceHeading.addEventListener("click", () => {
@@ -36,7 +52,6 @@ priceHeading.addEventListener("click", () => {
     .getElementById("price-filter-heading-id")
     .classList.toggle("price-filter-heading");
 });
-
 let buildingHeadin = document.getElementById("build-cond-heading-wrapper");
 let buildingArrow = document.getElementById("building-filter-arrow");
 buildingHeadin.addEventListener("click", () => {
@@ -54,37 +69,19 @@ function getInputValue() {
   return document.querySelector(".search-input").value;
 }
 document.querySelector(".search-input").addEventListener("keydown", () => {
-  fetch(`${myObject.baseUrl}searchStr=${getInputValue()}&skip=0&limit=9`)
-    .then((resp) => resp.json())
-    .then((res) => {
-      let mainContent = new Home(res.data.items);
-      //   console.log(res.data.items.length)
-      mainContent.renderMain();
-    });
+  searchVal = getInputValue();
+  getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
 });
 
-// sort function
 let sortField = document.getElementById("price-sort");
 sortField.addEventListener("change", () => {
-  console.log(sortField.value);
-  fetch(`${myObject.baseUrl}sortBy=${sortField.value}&skip=0&limit=9`)
-    .then((resp) => resp.json())
-    .then((res) => {
-      let mainContent = new Home(res.data.items);
-      //   console.log(res.data.items.length)
-      mainContent.renderMain();
-    });
+  sortVal = sortField.value;
+  getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
 });
-
-// get checked item
-function checkBox(id) {
-  console.log(document.getElementById(id));
-  document.getElementById(id).setAttribute("checked", "checked"); //.checked = true;
-  console.log(document.getElementById(id));
-}
 
 let cityCheckBox = document.querySelectorAll(".city");
 let tempStrArr = [];
+
 cityCheckBox.forEach((item) => {
   item.addEventListener("click", () => {
     if (item.checked) {
@@ -97,38 +94,27 @@ cityCheckBox.forEach((item) => {
         }
       }
     }
-    console.log(tempStrArr.join(""));
-    fetch(`${myObject.baseUrl}cityParam=${tempStrArr.join("%2C")}&skip=0`)
-      .then((resp) => resp.json())
-      .then((res) => {
-        let mainContent = new Home(res.data.items);
-        mainContent.renderMain();
-      });
+    cityVal = tempStrArr.join("%2C");
+    getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
   });
 });
 
-// fromParam - toParam
 let priceFilter = document.querySelectorAll(".price");
-console.log(priceFilter);
 priceFilter.forEach((item) => {
   item.addEventListener("click", () => {
     console.log(item.value.split("-")[0]);
-    fetch(
-      `${myObject.baseUrl}fromParam=${item.value
-        .split("-")[0]
-        .trim()}&toParam=${item.value.split("-")[1].trim()}&skip=0`
-    )
-      .then((resp) => resp.json())
-      .then((res) => {
-        let mainContent = new Home(res.data.items);
-        mainContent.renderMain();
-      });
+    if(item.value !== 'ფასები') {
+        fromVal = item.value.split("-")[0].trim();
+        toVal = item.value.split("-")[1].trim();
+    }
+    getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
   });
 });
 
 //typeParam
 let buildingCheck = document.querySelectorAll(".building");
 let buildArr = [];
+
 buildingCheck.forEach((item) => {
   item.addEventListener("click", () => {
     if (item.checked) {
@@ -148,11 +134,7 @@ buildingCheck.forEach((item) => {
         }
       }
     }
-    fetch(`${myObject.baseUrl}typeParam=${buildArr.join("%2C")}&skip=0`)
-      .then((resp) => resp.json())
-      .then((res) => {
-        let mainContent = new Home(res.data.items);
-        mainContent.renderMain();
-      });
+    typeVal = buildArr.join("%2C");
+    getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
   });
 });
