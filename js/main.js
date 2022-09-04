@@ -1,17 +1,28 @@
 import { Home } from "./modules/home.js";
 import { generateApi } from "./common/config.js";
 
-// render mark-up dynamicly
-let homePage = new Home();
-homePage.render();
-
-// api param values
+// api param default values
 let fromVal = "";
 let toVal = "";
 let cityVal = "";
 let typeVal = "";
 let searchVal = "";
 let sortVal = "";
+
+let searchField = document.querySelector(".search-input");
+let sortField = document.getElementById("price-sort");
+let cityCheckArr = [];
+let buildArr = [];
+
+// display filter
+function changeFilterDisplay(clickId, arrow, formId, headingId, heading) {
+  document.getElementById(clickId).addEventListener("click", () => {
+    document.getElementById(arrow).classList.toggle("arrow-down");
+    document.getElementById(arrow).classList.toggle("arrow-up");
+    document.getElementById(formId).classList.toggle("hidden");
+    document.getElementById(headingId).classList.toggle(heading);
+  });
+}
 
 // render main content
 function getContent(apiUrl) {
@@ -23,74 +34,66 @@ function getContent(apiUrl) {
     });
 }
 
+// render mark-up dynamicly
+let homePage = new Home();
+homePage.render();
+
+// set main content
 getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal));
 
-// filter section  display
-// !! make a function from these !! do not touch yet
-let cityHeading = document.getElementById("city-filter-heading-wrapper");
-let cityArrow = document.getElementById("city-filter-arrow");
-cityHeading.addEventListener("click", () => {
-  cityArrow.classList.toggle("arrow-down");
-  cityArrow.classList.toggle("arrow-up");
-  document.getElementById("city-filter-form-id").classList.toggle("hidden");
-  document
-    .getElementById("city-filter-heading-id")
-    .classList.toggle("city-filter-heading");
-});
-let priceHeading = document.getElementById("price-filter-heading-wrapper");
-let priceArrow = document.getElementById("price-filter-arrow");
-priceHeading.addEventListener("click", () => {
-  priceArrow.classList.toggle("arrow-down");
-  priceArrow.classList.toggle("arrow-up");
-  document.getElementById("price-filter-form-id").classList.toggle("hidden");
-  document
-    .getElementById("price-filter-heading-id")
-    .classList.toggle("price-filter-heading");
-});
-let buildingHeadin = document.getElementById("build-cond-heading-wrapper");
-let buildingArrow = document.getElementById("building-filter-arrow");
-buildingHeadin.addEventListener("click", () => {
-  buildingArrow.classList.toggle("arrow-down");
-  buildingArrow.classList.toggle("arrow-up");
-  document.getElementById("building-filter-form-id").classList.toggle("hidden");
-  document
-    .getElementById("building-cond-heading-id")
-    .classList.toggle("building-cond-heading");
-});
-// make a function
+// city filter display
+changeFilterDisplay(
+  "city-filter-heading-wrapper",
+  "city-filter-arrow",
+  "city-filter-form-id",
+  "city-filter-heading-id",
+  "city-filter-heading"
+);
 
-// get search field value
-function getInputValue() {
-  return document.querySelector(".search-input").value;
-}
-document.querySelector(".search-input").addEventListener("keyup", () => {
-  searchVal = getInputValue();
+// price filter display
+// changeFilterDisplay(
+//   "price-filter-heading-wrapper",
+//   "price-filter-arrow",
+//   "price-filter-form-id",
+//   "price-filter-heading-id",
+//   "price-filter-heading"
+// );
+
+// building type filter display
+changeFilterDisplay(
+  "build-cond-heading-wrapper",
+  "building-filter-arrow",
+  "building-filter-form-id",
+  "building-cond-heading-id",
+  "building-cond-heading"
+);
+
+// search
+searchField.addEventListener("keyup", () => {
+  searchVal = searchField.value;
   getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal));
 });
 
 // sort asc/desc
-let sortField = document.getElementById("price-sort");
 sortField.addEventListener("change", () => {
   sortVal = sortField.value;
   getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal));
 });
 
-// filter by price
-let cityCheckBox = document.querySelectorAll(".city");
-let tempStrArr = [];
-cityCheckBox.forEach((item) => {
+// filter by city
+document.querySelectorAll(".city").forEach((item) => {
   item.addEventListener("click", () => {
     if (item.checked) {
-      tempStrArr.push(item.value);
-      console.log(tempStrArr);
+      cityCheckArr.push(item.value);
     } else {
-      for (let i = 0; i < tempStrArr.length; i++) {
-        if (tempStrArr[i] === item.value) {
-          tempStrArr.splice(i, 1);
+      for (let i = 0; i < cityCheckArr.length; i++) {
+        if (cityCheckArr[i] === item.value) {
+          cityCheckArr.splice(i, 1);
         }
       }
     }
-    cityVal = tempStrArr.join("%2C");
+    cityVal = cityCheckArr.join("%2C");
+    console;
     getContent(
       generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal)
     );
@@ -98,10 +101,8 @@ cityCheckBox.forEach((item) => {
 });
 
 // filter by price
-let priceFilter = document.querySelectorAll(".price");
-priceFilter.forEach((item) => {
+document.querySelectorAll(".price").forEach((item) => {
   item.addEventListener("click", () => {
-    console.log(item.value.split("-")[0]);
     if (item.value !== "ფასები") {
       fromVal = item.value.split("-")[0].trim();
       toVal = item.value.split("-")[1].trim();
@@ -116,17 +117,13 @@ priceFilter.forEach((item) => {
 });
 
 // filter by building condition
-let buildingCheck = document.querySelectorAll(".building");
-let buildArr = [];
-buildingCheck.forEach((item) => {
+document.querySelectorAll(".building").forEach((item) => {
   item.addEventListener("click", () => {
     if (item.checked) {
-      // excess tab in this case
-      if (item.value === "თეთრი კარკასი") {
-        buildArr.push("თეთრი+კარკასი%09");
-      } else {
-        buildArr.push(item.value.split(" ").join("+"));
-      }
+      //  excess tab in api for this value
+      item.value === "თეთრი კარკასი"
+        ? buildArr.push("თეთრი+კარკასი%09")
+        : buildArr.push(item.value.split(" ").join("+"));
     } else {
       for (let i = 0; i < buildArr.length; i++) {
         if (
