@@ -93,10 +93,8 @@ export class Home extends Base {
       .map((obj, index) => {
         return `
         <div class="result-item-wrapper">
-          <div
-            class="result-img"
-            style="background-image: url(https://ramad.bog.ge/s3/solo/${obj.image.url}); "
-            >
+          <div class="result-img-wrapper"> 
+            <img class="result-img" src="https://ramad.bog.ge/s3/solo/${obj.image.url}" />
           </div>
           <article class="main-content-article">
             <div class="result-lower-wrap">
@@ -114,6 +112,10 @@ export class Home extends Base {
       `;
       })
       .join(" ");
+  }
+
+  _countResultItems() {
+    return this.appJSON.length;
   }
 
   render() {
@@ -135,5 +137,6 @@ export class Home extends Base {
 
   renderMain() {
     this.setContent("main-content-id", this._getMainContent());
+    this.setContent("count-result-values", this._countResultItems());
   }
 }

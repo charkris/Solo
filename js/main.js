@@ -1,5 +1,5 @@
 import { Home } from "./modules/home.js";
-import { generateApi } from "./common/config.js"
+import { generateApi } from "./common/config.js";
 
 // render mark-up dynamicly
 let homePage = new Home();
@@ -12,13 +12,8 @@ let cityVal = "";
 let typeVal = "";
 let searchVal = "";
 let sortVal = "";
-let skipVal = 0;
-let limitVal = 9;
-let newApi;
 
-// console.log(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal))
-// newApi = `${config.baseUrl}fromParam=${fromVal}&toParam=${toVal}&cityParam=${cityVal}&typeParam=${typeVal}&searchStr=${searchVal}&sortBy=${sortVal}&skip=${skipVal}&limit=${limitVal}`;
-
+// render main content
 function getContent(apiUrl) {
   fetch(apiUrl)
     .then((resp) => resp.json())
@@ -28,7 +23,7 @@ function getContent(apiUrl) {
     });
 }
 
-getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
+getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal));
 
 // filter section  display
 // !! make a function from these !! do not touch yet
@@ -64,24 +59,25 @@ buildingHeadin.addEventListener("click", () => {
 });
 // make a function
 
-// search field
+// get search field value
 function getInputValue() {
   return document.querySelector(".search-input").value;
 }
-document.querySelector(".search-input").addEventListener("keydown", () => {
+document.querySelector(".search-input").addEventListener("keyup", () => {
   searchVal = getInputValue();
-  getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
+  getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal));
 });
 
+// sort asc/desc
 let sortField = document.getElementById("price-sort");
 sortField.addEventListener("change", () => {
   sortVal = sortField.value;
-  getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
+  getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal));
 });
 
+// filter by price
 let cityCheckBox = document.querySelectorAll(".city");
 let tempStrArr = [];
-
 cityCheckBox.forEach((item) => {
   item.addEventListener("click", () => {
     if (item.checked) {
@@ -95,26 +91,33 @@ cityCheckBox.forEach((item) => {
       }
     }
     cityVal = tempStrArr.join("%2C");
-    getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
+    getContent(
+      generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal)
+    );
   });
 });
 
+// filter by price
 let priceFilter = document.querySelectorAll(".price");
 priceFilter.forEach((item) => {
   item.addEventListener("click", () => {
     console.log(item.value.split("-")[0]);
-    if(item.value !== 'ფასები') {
-        fromVal = item.value.split("-")[0].trim();
-        toVal = item.value.split("-")[1].trim();
+    if (item.value !== "ფასები") {
+      fromVal = item.value.split("-")[0].trim();
+      toVal = item.value.split("-")[1].trim();
+    } else {
+      fromVal = "";
+      toVal = "";
     }
-    getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
+    getContent(
+      generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal)
+    );
   });
 });
 
-//typeParam
+// filter by building condition
 let buildingCheck = document.querySelectorAll(".building");
 let buildArr = [];
-
 buildingCheck.forEach((item) => {
   item.addEventListener("click", () => {
     if (item.checked) {
@@ -129,12 +132,13 @@ buildingCheck.forEach((item) => {
         if (
           buildArr[i] === item.value.split(" ").join("+") ||
           buildArr[i] === "თეთრი+კარკასი%09"
-        ) {
+        )
           buildArr.splice(i, 1);
-        }
       }
     }
     typeVal = buildArr.join("%2C");
-    getContent(generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal, skipVal, limitVal));
+    getContent(
+      generateApi(fromVal, toVal, cityVal, typeVal, searchVal, sortVal)
+    );
   });
 });

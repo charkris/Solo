@@ -41,8 +41,10 @@ export const config = {
     "ლურჯი კარკასი",
     "ჭკვიანი კარკასი",
   ],
+  skipVal: 0,
+  limitVal: 9,
 };
 
-export function generateApi(from, to, city, type, search, sort, skip, limit) {
-  return `${config.baseUrl}fromParam=${from}&toParam=${to}&cityParam=${city}&typeParam=${type}&searchStr=${search}&sortBy=${sort}&skip=${skip}&limit=${limit}`;
+export function generateApi(from, to, city, type, search, sort) {
+  return `${config.baseUrl}fromParam=${from}&toParam=${to}&cityParam=${city}&typeParam=${type}&searchStr=${search}&sortBy=${sort}&skip=${config.skipVal}&limit=${config.limitVal}`;
 }
