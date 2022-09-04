@@ -51,13 +51,13 @@ changeFilterDisplay(
 );
 
 // price filter display
-// changeFilterDisplay(
-//   "price-filter-heading-wrapper",
-//   "price-filter-arrow",
-//   "price-filter-form-id",
-//   "price-filter-heading-id",
-//   "price-filter-heading"
-// );
+changeFilterDisplay(
+  "price-filter-heading-wrapper",
+  "price-filter-arrow",
+  "price-filter-form-id",
+  "price-filter-heading-id",
+  "price-filter-heading"
+);
 
 // building type filter display
 changeFilterDisplay(
